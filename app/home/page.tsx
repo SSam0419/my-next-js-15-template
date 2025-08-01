@@ -1,8 +1,16 @@
-export default function page() {
+import { MockTableComponent } from "@/components/mock-table-component";
+
+export default async function page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await searchParams;
+
   return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <p>This is the protected behind clerk auth.</p>
-    </div>
+    <>
+      <pre>{JSON.stringify(params, null, 2)}</pre>
+      <MockTableComponent />
+    </>
   );
 }
